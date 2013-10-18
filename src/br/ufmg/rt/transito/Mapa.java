@@ -1,3 +1,5 @@
+// RT 
+
 package br.ufmg.rt.transito;
 
 import java.io.BufferedReader;
