@@ -1,4 +1,4 @@
-package br.ufmg.rt.transito;
+package br.ufmg.RTCollisionAvoidance;
 
 public class Tarefa {
 	

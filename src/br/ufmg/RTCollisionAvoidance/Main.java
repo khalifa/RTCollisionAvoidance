@@ -1,6 +1,6 @@
-package br.ufmg.rt.transito;
+package br.ufmg.RTCollisionAvoidance;
 
-public class RealTimeTransito {
+public class Main {
 
 	public static void main(String[] args) {
 		

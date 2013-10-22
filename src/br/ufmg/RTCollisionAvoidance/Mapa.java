@@ -1,6 +1,6 @@
 // RT 
 
-package br.ufmg.rt.transito;
+package br.ufmg.RTCollisionAvoidance;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -76,7 +76,7 @@ public class Mapa {
 					else {
 
 						radares.add(radar);
-						// cria uma aresta/via não direcionada, ou seja, dupla direção
+						// cria uma aresta/via nï¿½o direcionada, ou seja, dupla direï¿½ï¿½o
 						addVia(radarAnterior, radar); // 
 						addVia(radar, radarAnterior);
 					}
@@ -94,14 +94,14 @@ public class Mapa {
 			for (int j = 0; j < COLUMN; j++) {
 				
 				if ((i+1)<LINES){
-					// cria uma aresta/via não direcionada, ou seja, dupla direção
+					// cria uma aresta/via nï¿½o direcionada, ou seja, dupla direï¿½ï¿½o
 					addVia(matriz[i][j], matriz[i+1][j]); // 
 					addVia(matriz[i+1][j], matriz[i][j]);
 				}
 			}
 		}
 
-		System.out.println("O mapa completo com todos os radares e suas respectivas conexões: ");
+		System.out.println("O mapa completo com todos os radares e suas respectivas conexï¿½es: ");
 		System.out.println();
 		System.out.println(this.toString());
 	}
@@ -214,9 +214,9 @@ public class Mapa {
 
 /*	  	//====================================================================
 	  	//====================================================================
-		// Esse método busca o menor caminho entre dois radares. Para esse cálculo é
-		// usado o algorítmo de Busca em Largura que, apesar de ser um algorítmo guloso,
-		// garante o resultado ótimo.
+		// Esse mï¿½todo busca o menor caminho entre dois radares. Para esse cï¿½lculo ï¿½
+		// usado o algorï¿½tmo de Busca em Largura que, apesar de ser um algorï¿½tmo guloso,
+		// garante o resultado ï¿½timo.
 	     public int buscaEmLargura(Radar origem, String wordDestino) {
 	     	
 	     	Iterator<Radar> itRadares = radares.values().iterator();
@@ -229,25 +229,25 @@ public class Mapa {
 	     		// quando for o primeiro radar (root), seta a distancia para zero 
 	     		if (rCurrent.getName().contains(origem.getName()))
 	     				
-	     			rCurrent.setDistancia(0); // distância dele mesmo é zero
+	     			rCurrent.setDistancia(0); // distï¿½ncia dele mesmo ï¿½ zero
 	     			
 	     		else rCurrent.setDistancia(9999); // infinito
 	     			
-	     		// ainda não sabe quem é o pai
+	     		// ainda nï¿½o sabe quem ï¿½ o pai
 	     		rCurrent.setParent(null);
 	     		
-	     		// ainda não foi visitado
+	     		// ainda nï¿½o foi visitado
 	     		rCurrent.setVisited(false);
 
 	     	}
 	  
-	        	// cria uma fila e insere o primeiro vértice ( ou vértice inicial)
+	        	// cria uma fila e insere o primeiro vï¿½rtice ( ou vï¿½rtice inicial)
 	     	Queue<Radar> queue = new LinkedList<Radar>();
 	     	
-	     	// adiciona o primeiro vértice na fila
+	     	// adiciona o primeiro vï¿½rtice na fila
 	     	queue.add(origem);
 	     	
-	     	// configura o pai e a distancia do primeiro vértice
+	     	// configura o pai e a distancia do primeiro vï¿½rtice
 	     	origem.setParent(null);
 	     	origem.setDistancia(0);
 	      	
@@ -255,41 +255,41 @@ public class Mapa {
 	     	// enquanto houver radares na fila
 	     	while (!queue.isEmpty()){
 	     		
-	     		// remove o vértice da fila
+	     		// remove o vï¿½rtice da fila
 	     		Radar v = (Radar) queue.remove(); 
 	     		
 	     		// configura que ele foi visitado
 	     		v.setVisited(true); 
 	     		
-	     		// solicita a lista dos vértices adjacentes/sucessores do vértice removida da fila 
+	     		// solicita a lista dos vï¿½rtices adjacentes/sucessores do vï¿½rtice removida da fila 
 	     		Iterator <Radar> itSucessors = v.getSucessorsList().iterator(); 
 	     		
-	     		// percorre a lista dos vértices adjacentes/sucessores e os coloca na fila
+	     		// percorre a lista dos vï¿½rtices adjacentes/sucessores e os coloca na fila
 	     		while (itSucessors.hasNext()){
 	     			
 	     			Radar vAdj = (Radar) itSucessors.next();
 	     			
-	     			// verifica se o vértice adjacente já foi visitado (ou enfileirado)
+	     			// verifica se o vï¿½rtice adjacente jï¿½ foi visitado (ou enfileirado)
 	     			if(!vAdj.isVisited()){
 	     				
-	     				// seta que o vértice foi visitado agora
+	     				// seta que o vï¿½rtice foi visitado agora
 	     				vAdj.setVisited(true);
 	     				//enqueued [(vAdj.getNumber() -1)] = true;
 	     				
-	     				// seta o pai dos vértices adjacentes
+	     				// seta o pai dos vï¿½rtices adjacentes
 	     				vAdj.setParent(v);
 	     				
-	     				// seta a distancia, em nro de vias, do vértice pai até o vértice adjacente
+	     				// seta a distancia, em nro de vias, do vï¿½rtice pai atï¿½ o vï¿½rtice adjacente
 	     				vAdj.setDistancia(v.getDistancia() + 1);
 	     				
-	     				// adiciona o vértice na fila
+	     				// adiciona o vï¿½rtice na fila
 	         			queue.add(vAdj);
 	     				
 	     			}//end if
 	     		}// end while
 	     		
-	     		// depois que todos os vértices adjacentes do vértice v foram visitados e incluídos na fila,
-	     		// o vértice v passa a ser conhecido e visitado e por tanto, deve ser removido da fila
+	     		// depois que todos os vï¿½rtices adjacentes do vï¿½rtice v foram visitados e incluï¿½dos na fila,
+	     		// o vï¿½rtice v passa a ser conhecido e visitado e por tanto, deve ser removido da fila
 	     		queue.remove(v);
 	 			
 	     	}// end while queue 	
@@ -302,7 +302,7 @@ public class Mapa {
 	
 	//------------------------------------------------------------------------------------------
 	//------------------------------------------------------------------------------------------
-	// Esse método ler o mapa onde todos os radares, seus nomes, estão configurados.
+	// Esse mï¿½todo ler o mapa onde todos os radares, seus nomes, estï¿½o configurados.
 	private int readMapFile(){
 
 		String path = "C:\\Documents and Settings\\kattiana\\My Documents\\Real Time\\MapaDeRadares10x10.txt";
