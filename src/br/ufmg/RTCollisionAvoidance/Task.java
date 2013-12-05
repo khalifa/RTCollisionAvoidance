@@ -2,9 +2,12 @@ package br.ufmg.RTCollisionAvoidance;
 
 public class Task {
 	
-	private int prioridade;
-	private int tempoDeExec;
-	private int tempoDeEspera;
+	int vehicleId;
+	int executionTime;
+	int deadline;
 	
+	public Task(int vehicleId){
+		this.vehicleId = vehicleId;
+	}
 
 }

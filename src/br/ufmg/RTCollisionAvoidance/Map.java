@@ -12,10 +12,10 @@ import br.ufmg.RTCollisionAvoidance.Vehicle.VehicleType;
 
 public class Map {
 
-	private Cell[][] grid;
-	private int columns;
-	private int lines;
-	private ArrayList<Vehicle> vehicles;
+	Cell[][] grid;
+	int columns;
+	int lines;
+	ArrayList<Vehicle> vehicles;
 	int collisions, leisure;
 
 	public Map(String fileName) {

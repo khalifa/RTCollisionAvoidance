@@ -17,7 +17,7 @@ public class Vehicle {
 	public VehicleType type;
 	Direction direction;
 	boolean stop;
-	boolean sendSignal;
+	boolean signal;
 	boolean waiting;
 	int posX, posY;
 	int id;
@@ -29,7 +29,7 @@ public class Vehicle {
 		this.cell = cell;
 		this.id = id;
 		this.waiting = false;
-		this.sendSignal = true;
+		this.signal = true;
 		if(this.type == VehicleType.AMBULANCE){
 			this.stop = false;
 		} else if (this.type == VehicleType.CARR){
@@ -39,6 +39,12 @@ public class Vehicle {
 	}
 	
 	public void nextCicle(){
+		if(this.cell.type == CellType.CROSSROAD){
+			if(this.type == VehicleType.CARR){
+				this.stop = true;
+			}
+			signal = true;
+		}
 		Cell nextCell;
 		switch(this.direction){
 		case NORTH:
@@ -81,6 +87,11 @@ public class Vehicle {
 			System.out.print("◀");
 			break;
 		}
+	}
+	
+	public Task sendSignal(){
+		signal = false;
+		return new Task(this.id);
 	}
 	
 }
