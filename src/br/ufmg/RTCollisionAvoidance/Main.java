@@ -24,8 +24,8 @@ public class Main {
 			collisions += system.map.collisions;
 			leisure += system.map.leisure;
 		}
-		System.out.println("Collisions: " + collisions/numberExecutions);
-		System.out.println("Leisure Time: " + leisure/numberExecutions);
+		System.out.println(/*"Collisions: " + */collisions/numberExecutions);
+		System.out.println(/*"Leisure Time: " + */leisure/numberExecutions);
 	}
 
 }
