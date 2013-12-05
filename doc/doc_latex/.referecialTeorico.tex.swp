@@ -1,0 +1,23 @@
+\chapter{CONTEXTUALIZAÇÃO E CONCEITOS RELEVANTES}
+
+Essa Seção expõe sucintamente os principais elementos para o desenvolvimento do trabalho proposto. Esclarecemos alguns conceitos envolvidos com a realização e avaliação de um ECG e apresentamos com mais detalhes o Pyramis, que foi a principal ferramenta utilizada para o desenvolvimento do trabalho. Além disso, mostramos o código Minnesota e suas especificidades para que possamos entender que a utilização isolada desse código gerado de maneira automática deve ser desencorajada o que serve de motivação para o objetivo de recuperação das medições brutas do ECG.
+
+
+\section{Exame de Eletrocardiograma}
+
+O ECG é o registro dos fenômenos elétricos que se originam durante a atividade cardíaca por meio de um aparelho denominado eletrocardiógrafo. O eletrocardiógrafo é um galvanômetro, aparelho que detecta a diferença de potencial entre dois pontos, que mede pequenas intensidades de corrente que recolhe a partir de dois eletrodos, que são pequenas placas de metal conectadas a um fio condutor, dispostos em determinados pontos do corpo humano. Ele serve como um auxiliar valioso no diagnóstico de grande número de cardiopatias e outras condições como, por exemplo, os distúrbios hidro-eletrolíticos \cite{Ramos2007}. Como pode ser visto na Figura \ref{figECG} retirada de \cite{Ramos2007}, o registro das medições do eletrocardiógrafo é feito em um papel quadriculado e dividido em quadrados pequenos de 1mm. Cada grupo de cinco quadrados na horizontal e na vertical compreendem um quadrado maior delimitado por uma linha mais grossa. O tempo fica denotado no eixo horizontal e o registro é realizado em uma velocidade de 25 mm/seg. Sendo assim, cada quadrado equivale a 0,04 segundos. Portanto, cinco quadrados, ou 1 quadrado maior, equivalem a 0,2 segundos. A voltagem é denotada no eixo vertical e cada quadrado equivale a 0,1 mVolt.
+
+
+\section{Gerência Integrada de Sistemas de Diagnóstico Clínico}
+
+Os sistemas de gerência integrada de diagnóstico clínico são uma parte indispensável para o funcionamento de uma instituição de saúde moderna \cite{McCormack2013}. Tais sistemas auxiliam a prática da medicina armazenando dados dos pacientes, captando informações geradas por aparelhos de exame, dentre outras funcionalidades. Dependendo da solução de gerenciamento utilizada pode-se alcançar melhorias significativas na eficiência do fluxo de trabalho clínico e reduzir os custos envolvidos nesses serviços. O software alvo dessa pesquisa se insere nessa categoria e alguns outros exemplos de software desse tipo são o Centricity\textcopyright\ da General Electric, o MediTouch\textcopyright\ e o Medios EHR\textcopyright. A integração entre a captação e apresentação dos dados é considerado um dos aspectos mais desafiadores da implementação desse tipo de software \cite{AMA} e o aprimoramento de tal aspecto é um dos objetivos desse trabalho.
+
+\section{Software Pyramis}
+
+O Pyramis é um software comercial desenvolvido para gerencia integrada de sistemas de diagnóstico por ECG desde a captação dos resultados até a interpretação e armazenamento dos mesmos.  As principais características do sistema são: - Escalabilidade: O sistema suporta uma quantidade arbitrária de dados limitada somente à capacidade de armazenamento física do cliente. Além disso, novos dispositivos podem ser adicionados livremente. - Flexibilidade: Diversos tipos de dispositivos são suportados e adicionados a qualquer tempo. - Modularidade: Existem vários níveis de acesso e separação entre módulos de suporte técnico, manutenção de performance e serviços para o profissional de diagnostico.
+
+\section{Código Minnesota}
+
+O código Minnesota é o sistema de classificação mais amplamente utilizado para avaliar ECG e é útil para exames clínicos e epidemiológicos \cite{Kors2000}. Ele foi inicialmente proposto para codificar e suprir a falta de padronização na interpretação do ECG provendo um framework para documentar a avaliação de uma forma mais clara e definida. Basicamente essa codificação consiste de um conjunto de regras de medição, um sistema de classificação e um conjunto de regras de exclusão de diagnóstico \cite{Kors1996}.
+
+Mas é importante ressaltar que Código Minnesota é sujeito a erros e por si só não produz a interpretação de um ECG \cite{Macfarlane2000}. O que codificação realmente permite é uma classificação da morfologia eletrocardiográfica com base em critérios rígidos baseados em características proeminentes reconhecidas no ECG. Sendo assim, as medições reais do ECG sempre têm de acompanhar a codificação para que uma interpretação confiável seja feita.

@@ -1,0 +1,15 @@
+\begin{resumo}
+
+  Este trabalho se propõe a fazer o levantamento bibliográfico e pesquisa necessária para a implementação no compilador Low Level Virtual Machine (\sigla{LLVM}{Low Level Virtual Machine}) \cite{Lattner2004} de uma nova heurística para alocação de registradores baseado no algoritmo de Crescimento de Domínios Ativos proposta por Ottoni e Araújo \cite{Ottoni} e aperfeiçoada por Ambrosio \cite{Ambrosio}. O resultado da pesquisa proposta será o próprio alocador de registradores incorporado ao LLVM. A alocação de registradores é um dos problemas mais importantes para otimização de código. Registradores são memórias pequenas, caras e rápidas que existem dentro da CPU, e que guardam valores usados durante a execução de programas. Alocação de registradores é a fase do compilador que decide quais valores devem ser atribuídos a estes registradores. Geralmente, existem poucos registradores na máquina, menos que o necessário, e isto faz com que alguns valores contidos em registradores sejam derramados para a memória. Derramar um valor para a memória significa que este valor será acessado via memória, e não via registradores, fazendo com que o tempo de execução do programa aumente. O problema de se encontrar uma alocação de registradores ótima é NP-completo, logo deve-se buscar heurísticas para resolvê-lo.
+
+  Register Allocation is the compiler pass that determines which program values should be assigned to machine registers. Frequently, there are less machine registers than necessary, and consequently, some values should be spilled to memory. An efficient register allocation reduces the number of memory access instructions in the code. However, this is a NP-problem, making it solved through heuristics. The heuristic commonly used is graph coloring. The work presented in this paper implements a new heuristics for register allocation, based in Live Range Growth.
+
+  This work aims to make the literature review and research needed to implement the LLVM compiler of a new heuristic for register allocation algorithm based in Live Range Growth proposed by Ottoni and Araújo and perfected by Ambrosio. The result of the proposed research will be the register allocator itself incorporated into LLVM. The register allocation is one of the most important problems for code optimization. Registers are scarse, expensive and fast memories that exist within the CPU, and used to store values ​​during program execution. Register allocation is the phase of the compiler that decides what values ​​should be assigned to these registers. Generally, there are few registers on the machine, unless necessary, and this causes some values ​​in registers are spilled to memory. Pour a value for the memory means this value will be accessed via memory, not through registers, so that the runtime of the program increases. The problem of finding an optimal register allocation is NP-complete, then you should seek heuristics to solve it.
+
+  
+
+
+
+
+  \textbf{Palavras-chave:} Engenharia de \emph{software}.
+\end{resumo}

@@ -1,0 +1,68 @@
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+The top-level auxiliary file: modelo-ufmg.aux
+A level-1 auxiliary file: capa.aux
+A level-1 auxiliary file: resumo.aux
+A level-1 auxiliary file: abstract.aux
+A level-1 auxiliary file: introducao.aux
+A level-1 auxiliary file: referecialTeorico.aux
+A level-1 auxiliary file: metodologia.aux
+A level-1 auxiliary file: desenvolvimento.aux
+A level-1 auxiliary file: resultados.aux
+A level-1 auxiliary file: conclusao.aux
+The style file: abnt-num.bst
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Database file #1: abnt-options.bib
+Database file #2: modelo-ufmg.bib
+Warning--entry type for "PythonAPI" isn't style-file defined
+--line 347 of file modelo-ufmg.bib
+Warning--entry type for "Pyramis" isn't style-file defined
+--line 361 of file modelo-ufmg.bib
+Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
++---------------------------------------------------------+
+| Estilo bibliografico abnt-num.bst versao 1.50           |
+| Implementa a NBR6023, NBR10520 e NBR10523               |
+| Em caso de duvidas ou problemas com este estilo procure |
+| http://abntex.codigolivre.org.br                        |
++---------------------------------------------------------+
+You've used 11 entries,
+            6522 wiz_defined-function locations,
+            1225 strings with 10612 characters,
+and the built_in function-call counts, 7241 in all, are:
+= -- 729
+> -- 140
+< -- 2
++ -- 123
+- -- 44
+* -- 417
+:= -- 995
+add.period$ -- 32
+call.type$ -- 12
+change.case$ -- 81
+chr.to.int$ -- 17
+cite$ -- 10
+duplicate$ -- 323
+empty$ -- 586
+format.name$ -- 223
+if$ -- 1774
+int.to.chr$ -- 0
+int.to.str$ -- 0
+missing$ -- 186
+newline$ -- 56
+num.names$ -- 32
+pop$ -- 269
+preamble$ -- 1
+purify$ -- 36
+quote$ -- 0
+skip$ -- 596
+stack$ -- 1
+substring$ -- 252
+swap$ -- 114
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 15
+warning$ -- 0
+while$ -- 48
+width$ -- 0
+write$ -- 127
+(There were 2 warnings)

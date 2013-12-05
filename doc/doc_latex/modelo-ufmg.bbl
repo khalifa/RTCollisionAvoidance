@@ -1,0 +1,62 @@
+\providecommand{\abntreprintinfo}[1]{%
+ \citeonline{#1}}
+\begin{thebibliography}{}
+\providecommand{\abntrefinfo}[3]{}
+\providecommand{\abntbstabout}[1]{}
+\abntbstabout{1.50 }
+
+\bibitem{Ramos2007}
+\abntrefinfo{Ramos e Sousa}{RAMOS; SOUSA}{2007}
+{RAMOS Ângela P.; SOUSA, B.~S. Eletrocardiograma: princípios, conceitos e
+  aplicações.
+\emph{Centro de Estudos de Fisiologia do Exercício Universidade Federal de
+  São Paulo}, 2007.}
+
+\bibitem{McCormack2013}
+\abntrefinfo{McCormack}{MCCORMACK}{2013}
+{MCCORMACK, M. Compare medical practice management software.
+\emph{Software Selection Advice}, 2013.}
+
+\bibitem{AMA}
+\abntrefinfo{Association}{ASSOCIATION}{2013}
+{ASSOCIATION, A.~M. How to select a practice management system.
+\emph{AMA-ASSN}, 2013.}
+
+\bibitem{Kors2000}
+\abntrefinfo{Kors e Crow}{KORS; CROW}{2000}
+{KORS, J.~A.; CROW, R.~S. Comparison of computer-assigned minnesota codes.
+\emph{American Journal of Epidemiology}, 2000.}
+
+\bibitem{Kors1996}
+\abntrefinfo{Kors e Wu}{KORS; WU}{1996}
+{KORS, J.~A.; WU, J.~G. Validation of a new computer program for minnesota
+  coding.
+\emph{J Electrocardiol}, 1996.}
+
+\bibitem{Macfarlane2000}
+\abntrefinfo{Macfarlane}{MACFARLANE}{2000}
+{MACFARLANE, P. Minnesota coding and the prevalence of ecg abnormalities.
+\emph{US National Institutes of Healt}, 2000.}
+
+\bibitem{Jung2004}
+\abntrefinfo{Jung}{JUNG}{2004}
+{JUNG, C.~F. \emph{Metodologia para pesquisa e desenvolvimento: aplicada a
+  novas tecnologias, produtos e processos}. 1. ed. [S.l.]: Axcel Books do
+  Brasil Editora. Rio De Janeiro/RJ, 2004.}
+
+\bibitem{Pyramis}
+\abntrefinfo{Cardiac\ldots}{CARDIAC\ldots}{2013}
+{CARDIAC Science Corporation. Pyramis ECG Management. Junho 2013.
+Dispon{\'\i}vel em: $<$http://www.cardiacscience.com/assets/008/5959.pdf$>$.}
+
+\bibitem{Martelli2013}
+\abntrefinfo{Martelli}{MARTELLI}{2013}
+{MARTELLI, A. R. e. D.~A. A. \emph{Python Cookbook}. 3. ed. [S.l.]: Axcel Books
+  do Brasil Editora. Rio De Janeiro/RJ, 2013.}
+
+\bibitem{PythonAPI}
+\abntrefinfo{Python\ldots}{PYTHON\ldots}{2013}
+{PYTHON 3.3 API Reference Manual. Junho 2013.
+Dispon{\'\i}vel em: $<$http://docs.python.org/3.3/c-api/$>$.}
+
+\end{thebibliography}

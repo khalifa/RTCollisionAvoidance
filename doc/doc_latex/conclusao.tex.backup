@@ -1,0 +1,5 @@
+\chapter{CONCLUSÕES E TRABALHOS FUTUROS}
+
+Durante a preparação para o desenvolvimento do algoritmo de alocação de registradores escolhido para este trabalho a infraestrutura do LLVM foi o ponto mais trabalhoso. Apesar de todas as vantagens geradas pela boa documentação e estrutura modular do projeto o número de classes do programa exige uma certa quantidade de tempo para a familiarização.
+
+A continuação deste trabalho envolverá a implementação efetiva do algoritmo e sua integração ao LLVM. Posteriormente as abordagens já implementadas serão comparadas com a nossa proposta para que sejam identificados casos onde cada abordagem deve ser utilizada objetivando a melhor eficiência do programa.

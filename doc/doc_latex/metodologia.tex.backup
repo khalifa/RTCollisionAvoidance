@@ -1,0 +1,35 @@
+\chapter{METODOLOGIA}
+
+
+\section{Especificidades Técnicos}
+
+O ambiente de desenvolvimento do trabalho possui configurações fixas. O sistema operacional utilizado é a distribuição Linux Ubuntu versão 11.10. No aspecto do hardware temos um processador Intel® Core™ i5-2410M CPU @ 2.30GHz x 4 e memória principal com tecnologia DDR3 de 4GB. Tais informações são importante do ponto de vista da metodologia pois, em etapas posteriores, irão ser realizadas comparações de performance e tempo de execução. Tais medidas são relevantes mas podemos também analisar uma métrica muito comum para alocadores de registradores que é o número de spills ou derramamentos para memória.
+
+\section{Execução de Atividades}
+
+O trabalho será realizado em dois semestres e as tarefas serão divididas em várias etapas. O cronograma a seguir apresenta as etapas realizadas durante o primeiro semestre de desenvolvimento.
+
+\emph{Etapa 1:} Levantamento bibliográfico. De 08/08/11 a 05/09/11. Inclui nessa etapa a realização de um levantamento bibliográfico de todo o material relacionado com o LLVM, o alocador de domínio ativo e demais alocadores de registradores.
+
+\emph{Etapa 2:} Familiarização com o LLVM. De 06/09/11 a 04/10/11. Nessa etapa aprenderemos a usar o LLVM .
+
+\emph{Etapa 3:} Estudo de alocadores de registradores. De 05/10/11 a 21/11/11. Passaremos a um estudo dos alocadores de registradores implementados para o LLVM. em especial aprofundado no estudo do alocador de registradores baseado em crescimento de domínio ativo.
+
+\emph{Etapa 4:} Escrita do relatório de POC 1. De 08/08/11 a 07/12/11. Essa etapa ocorreu concomitantemente com as outras etapas do trabalho. Ao final, concluímos o relatório.
+
+A Tabela \ref{tabCronograma}, apresentada a seguir, mostra o cronograma de execução das etapas previstas.
+
+    \begin{table}[h]
+        \begin{center}
+    		\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+    			\hline
+                \textbf{Etapa / Data} & 08/08 & 05/09 & 06/09 & 04/10 & 05/10 & 21/11 & 08/08 & 07/12 \\ \hline
+1 & início & término &  &  &  &  &  &  \\ \hline
+2 &  &  & início & término &  &  &  &  \\ \hline
+3 &  &  &  &  & início & término &  &  \\ \hline
+4 &  &  &  &  &  &  & início & término \\ \hline
+    		\end{tabular}
+    		\caption{Cronograma de realização das etapas do primeiro semestre}
+        	\label{tabCronograma}
+    	\end{center}
+    \end{table}

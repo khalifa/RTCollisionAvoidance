@@ -1,0 +1,16 @@
+\chapter{INTRODUÇÃO}
+
+  Alocação de registradores é a fase do compilador que determina quais valores do programa devem ser atribuídos aos registradores físicos. A Figura \ref{regalloc} exemplifica o processo de alocação de valores nos registradores. Na prática a quantidade de registradores de uma máquina é bem limitado exigindo a utilização da memória. O acesso à memória é uma operação computacionalmente cara e um alocador de registradores eficaz minimiza esse tipo de operação. No entanto esse é um problema NP-completo e, sendo assim, as abordagens utilizadas tentam resolvê-lo por meio de heurísticas. Nesta implementação, os candidatos à alocação são denominados domínios ativos. Estes são unidos a cada iteração do algoritmo, até que seu número total atinja o número de registradores disponíveis na arquitetura para alocação. para se decidir qual par de domínios ativos será unido a cada iteração, todas as combinações de pares são avaliadas e a que resultar na inserção de um menor número de instruções de acesso à memória no código resultante é a escolhida para a união.
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5,angle=0]{img/regalloc.png}
+    \caption{Alocação de valores nos registradores}
+    \label{regalloc}
+  \end{figure}
+
+  O texto dessa monografia está organizado da seguinte forma: A seção 2 contextualiza o assunto e apresenta os conceitos envolvidos. A seção 3 apresenta a metodologia aplicada à pesquisa. A seção 4 mostra o desenvolvimento do trabalho até o presente momento. A seção 5 apresenta os resultados obtidos e as eventuais discuções que surgiram ao longo do desenvolvimento. Por fim, são expostas as conclusões obtidas e os trabalhos futuros. \cite{Ambrosio2004} sadf \cite{Lattner2004} saf \cite{Leung1999} aaf \cite{Mossenbock2002} afa \cite{Ottoni2002} adfs \cite{Pereira2005} asdf \cite{Pereira2008}
+
+  
+  A solução mais usual para o problema de alocação de registradores é a coloração de grafos (Pereira, 2005). No entanto, a maior parte dos algoritmos existente ao calcular o custo de derramar um valor para a memória considera apenas um único bloco básico do programa. Assim, desconsidera-se a análise do grafo de fluxo de controle do programa, e a análise do fluxo de seus dados, exceto a de variáveis vivas. Isto faz com que o método não produza código eficiente em algumas situações. Este é o motivo pelo qual outras técnicas de alocação de registradores mais eficientes têm sido pesquisadas e desenvolvidas. Outros trabalhos tentam buscar abordagens novas para a resolução do problema, são exemplos (Mossenbock, 2002) e (Pereira, 2008).
+

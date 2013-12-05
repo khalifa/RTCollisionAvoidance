@@ -1,0 +1,84 @@
+\chapter{METODOLOGIA}
+
+\section{Tipo de Pesquisa}
+
+A pesquisa consistiu na exploração e aprimoramento de uma ferramenta e o trabalho proposto consiste na aplicação de conhecimentos adquiridos ao longo do curso de bacharelado em Ciência da Computação do Departamento de Ciência da Computação da Universidade Federal de Minas Gerais. Portanto, a natureza da pesquisa \cite{Jung2004} está definida e é considerada uma pesquisa de aplicação tecnológica. No que diz respeito aos procedimentos e desenvolvimento do trabalho, nos inserimos na classificação de trabalho exploratório com resultados práticos implementados e utilizados em um contexto real de ampla aplicação.
+
+
+
+\section{Especificidades Técnicas}
+
+O ambiente de desenvolvimento do trabalho possui configurações fixas e utiliza sistema operacional Windows 2003 Server\textcopyright\ na sua versão Standard Edition 32-bit. Um problema é que o sistema de gerenciamento integrado proporcionado pelo Pyramis encontra-se em uso pelo HC e pelas unidades participantes no projeto ELSA. Portanto, para realizamos os testes e desenvolvermos o trabalho de forma a não afetarmos o sistema criamos uma cópia do estado do sistema e virtualizamos a sua execução utilizando o software VMWare\textcopyright. O VMWare encontra-se disponível no site:
+\begin{verbatim}
+http://www.vmware.com/
+\end{verbatim}
+
+O software Pyramis \cite{Pyramis} utiliza um gerenciador de banco de dados IBM DB2\textcopyright\ na versão Workgroup Edition 7.2. Sendo assim, temos a disposição um banco de dados relacional com suporte Open Database Connectivity (\sigla{ODBC}{Open Database Connectivity}). Tal sistema suporta até mil conexões simultâneas e não possui limitação de armazenamento (limitado somente pela capacidade do hardware). O programa fornece uma interface web que deve ser acessada obrigatoriamente pelo navegador Internet Explorer\textcopyright\ nas versões 6, 7 ou 8.
+
+Com o intuito de estendermos as funcionalidades do Pyramis criamos scripts que podem ser acoplados ao sistema. Para acessarmos o banco de dados nesses scripts utilizamos a interface do ODBC que unifica a gerência e acesso de bancos de dados heterogêneos, inclusive o IBM DB2. Os scripts foram escritos na linguagem Python versão 3.3 cujo interpretador para várias plataformas pode ser encontrado em:\\
+\begin{verbatim}
+http://www.python.org/getit/
+\end{verbatim}
+No nosso caso utilizamos o instalador disponível em:\\
+\begin{verbatim}
+http://www.python.org/ftp/python/3.3.2/python-3.3.2.msi
+\end{verbatim}
+No ambiente do Windows basta rodarmos esse instalador para que o script funcione. Para fazer o acesso à interface ODBC precisamos instalar o módulo PyODBC cujo instalador se encontra em:\\
+\begin{verbatim}
+http://code.google.com/p/pyodbc/downloads/detail?name=pyodbc-3.0.7.win-amd64-py2.6.exe
+\end{verbatim}
+A linguagem de programação Python é uma linguagem de alto nível, interpretada, imperativa, orientada a objetos, funcional, de tipagem dinâmica e forte. Uma das maiores vantagens dessa linguagem é que sua sintaxe é simples e elegante, ideal para scripts e desenvolvimento de aplicações rápidas \cite{Martelli2013}. Outras referências que foram úteis para o desenvolvimento desse trabalho podem ser encontradas na API Python \cite{PythonAPI}.
+
+Para auxiliar no redesenho do banco de dados e no entendimento de suas relações utilizamos o software MySql Workbench\textcopyright. O MySQL Workbench é uma ferramenta gráfica para modelagem de dados, integrando criação e designer. A ferramenta possibilita trabalhar diretamente com objetos schema, além de fazer a separação do modelo lógico do catálogo de banco de dados. Toda a criação dos relacionamentos entre as tabelas pode ser baseado em chaves estrangeiras. Outro recurso que a ferramenta possibilita é realizar a engenharia reversa de esquemas do banco de dados, bem como gerar todos os scripts em SQL. O programa encontra-se disponível em:\\
+\begin{verbatim}
+www.mysql.com/products/workbench/
+\end{verbatim}
+
+\section{Execução de Atividades}
+
+O trabalho foi realizado em um semestre e as tarefas foram divididas em várias etapas. O cronograma a seguir apresenta as etapas desenvolvidas durante o semestre de trabalho.
+
+Etapa 1: \textbf{Levantamento bibliográfico}. De 19/08/13 a 30/08/13.
+
+As tarefas dessa etapa consistiram de um levantamento bibliográfico de todo o material relacionado ao Pyramis e seus subsistemas além de um estudo sobre os conceitos básicos envolvidos na realização de um ECG e na geração do código Minnesota.
+
+Etapa 2: \textbf{Familiarização com o Pyramis}. De 31/08/13 a 16/09/13.
+
+Nessa etapa estudamos a utilização do Pyramis e exploramos suas funcionalidades. Essa etapa foi importante para determinarmos o desenho do banco de dados interno do programa. Como resultado, identificamos as limitações e problemas do softwares e conseguimos acessar as informações guardadas em seu banco de dados.
+
+Etapa 3: \textbf{Levantamento de Requisitos com os Interessados}. De 16/09/13 a 30/09/13.
+
+Passamos a uma fase de interação mais próximas como as partes interessadas do HC na qual determinamos com mais exatidão os requisitos do trabalho ao mesmo tempo em que ajustamos o rumo que a implementação da solução proposta tomou.
+
+Etapa 4: \textbf{Implementação e Estensão Efetiva do Sistema}. De 30/09/13 a 12/11/13.
+
+Nessa etapa passamos a trabalhar na implementação efetiva da nossa proposta para estensão do sistema. Construímos scripts que foram acoplados ao Pyramis adicionando novas funcionalidades.
+
+Etapa 5: \textbf{Identificação e Recuperação de Dados Perdidos}. De 12/11/13 a 26/11/13.
+
+Devido ao fato de que os pesquisadores reportaram a perda de dados de exames armazenado pelo programa essa etapa se fez necessária. Nessa etapa identificamos em que proporção as perdas estavam ocorrendo, os motivos dessas perdas e propusemos mecanismos de recuperação para esses dados.
+
+Etapa 6: \textbf{Escrita da Monografia}. De 19/08/13 a 31/11/13.
+
+Essa etapa ocorreu concomitantemente com as outras etapas do trabalho. Ao final, geramos o texto definitivos da monografia.
+
+. \\
+
+A Tabela \ref{tabCronograma}, apresentada a seguir, mostra o cronograma de execução das etapas realizadas. A informação contida na tabela marca as semanas ocupadas com as tarefas de cada etapa.
+
+    \begin{table}[h]
+        \begin{center}
+    		\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+    			\hline
+                \textbf{Etapa / Semana} & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15\\ \hline
+                1 & X & X &   &   &   &   &   &   &   &   &   &   &   &   &  \\ \hline
+                2 &   &   & X & X &   &   &   &   &   &   &   &   &   &   &  \\ \hline
+                3 &   &   &   &   & X & X &   &   &   &   &   &   &   &   &  \\ \hline
+                4 &   &   &   &   &   &   & X & X & X & X & X & X &   &   &  \\ \hline
+                5 &   &   &   &   &   &   &   &   &   &   &   &   & X & X &  \\ \hline
+                6 & X & X & X & X & X & X & X & X & X & X & X & X & X & X & X\\ \hline
+    		\end{tabular}
+    		\caption{Cronograma de realização das etapas}
+        	\label{tabCronograma}
+    	\end{center}
+    \end{table}

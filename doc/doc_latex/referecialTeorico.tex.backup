@@ -1,0 +1,28 @@
+\chapter{CONTEXTUALIZAÇÃO E TRABALHOS RELACIONADOS}
+
+
+Diversas abordagens podem ser usadas para se solucionar o problema de alocação de registradores. Pelo fato da alocação de registradores ser um problema NP-completo, a maioria dos métodos de alocação sacrificam a qualidade do código gerado em favor de um menor tempo de compilação. Esta seção apresenta alguns dos métodos de alocação existentes. A solução mais usual para o problema de alocação de registradores é a coloração de grafos. Um exemplo é a abordagem de de Pereira e Palsberg \cite{Pereira2005} e outros exemplos classicos incluem os trabalhos de Chatin \cite{Chatin1981} o de Briggs \cite{Briggs1992}. No entanto, a maior parte dos algoritmos existentes, ao calcular o custo de derramar um valor para a memória considera apenas um único bloco básico do programa \footnote{Um bloco básico do programa é uma sequência de instruções consecutivas com uma unica entrada e uma única saida.}. Assim, desconsidera-se a análise do grafo de fluxo de controle do programa, e a análise do fluxo de seus dados, exceto a de variáveis vivas no início e no fim de cada bloco. Isto faz com que o método não produza código eficiente em algumas situações. Este é o motivo pelo qual outras técnicas de alocação de registradores mais eficientes têm sido pesquisadas e desenvolvidas. Outros trabalhos tentam buscar abordagens novas para a resolução do problema, são exemplos \cite{Mossenbock2002} e \cite{Pereira2008}.
+
+\section{Abordagem Baseada no Crescimento de Domínio Ativo}
+
+O problema central para se obter uma solução baseada em Crescimento de Domínio Ativo (Live Range Growth) \cite{Ottoni2002} para a Alocação Global de Registradores é o cálculo do menor custo associado a um dado domínio ativo. Neste algoritmo, considera-se um domínio ativo (live range) como sendo um conjunto de variáveis que são alocadas a um mesmo registrador. Logo, todas as variáveis de um mesmo domínio ativo são atribuídas ao mesmo registrador, fazendo com que todos os usos e definições destas variáveis sejam feitos via este registrador. Uma web é a combinação de correntes du (definição-uso) que se interceptam, isto é, que contêm um uso em comum. Inicialmente, cada web é colocada separadamente em um domínio ativo. O algoritmo heurístico, denominado Crescimento de Domínios Ativos, faz uma junção sucessiva de pares de domínios ativos, até que o número total deles atinja o número de registradores disponíveis na arquitetura em questão. Para decidir o par de domínios ativos unidos a cada iteração do algoritmo, todas as combinações de pares de domínios ativos são avaliadas, e a que resulta em um menor custo é escolhida.
+
+O custo de um domínio ativo é medido pelo número de instruções de carga e armazenamento necessárias para o ajuste do registrador. Assim, o problema central desta técnica é a determinação, para um dado domínio ativo, do número destas instruções para manter o registrador com a variável correta durante o fluxo de execução do programa. Para isso, essa técnica tenta contornar os problemas da coloração de grafos fazendo: (a) análise de fluxo de controle de programa, (b) análise de variáveis vivas, e (c) análise de fluxo de dados denominada Análise de Alcançabilidade e Consistência de Registradores.
+
+\section{LLVM}
+
+Outro referencial importante para o desenvolvimento do trabalho proposto é o artigo de Lattner e Adve \cite{Lattner2004}. Grande parte da dificuldade em se realizar esse trabalho passa pelo entendimento e capacidade de modificação do compilador LLVM. Com essa referencia podemos nos familiarizar com o projeto do compilador e absorver métodos para que possamos adicionar a nossa contribuição ao LLVM.
+
+O projeto LLVM consiste de uma coleção modular de componentes reutilizáveis para implementação de compiladores e de ferramentas para análise e otimização de código executável. O LLVM iniciou-se como um projeto de pesquisa na University of Illinois e hoje em dia conta com um número bastante significativo de contribuintes internacionais e de sub-projetos criados no topo destes componentes. É um destaque dentre os exemplos de casos de sucesso em termos de pesquisa acadêmica na área de compiladores, e uma referência entre as ferramentas de compilação tanto de código aberto como proprietário.
+
+O projeto do LLVM teve como motivação a criação de um esforço coletivo para gerenciar a complexidade inerente na construção de compiladores no estado-da-arte atual \cite{Andrew2002}. As aplicações modernas necessitam de tecnologias de compilação que excedam o modelo tradicional do compilador estático, que realiza análises e otimizações sob o código fonte original e simplesmente gera o executável final. A Figura \ref{llvmstrategy} descreve as etapas que compõem a estratégia de compilação do LLVM.
+
+  \begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5,angle=0]{img/llvmstrategy.png}
+    \caption{etapas de compilação do LLVM}
+    \label{llvmstrategy}
+  \end{figure}
+
+A infraestrutura da LLVM fornece algumas implementações nativas de alocadores de registradores, que podem ser escolhidas ao se usar o compilador. A organização modular da LLVM ainda permite que novos algoritmos sejam adicionados ao compilador, não sendo necessário ter conhecimento sobre detalhes das implementações existentes (LATTNER; LASKEY, 2010). As principais classes para o desenvolvimento de algoritmos de alocação são organizadas de forma modularizada, permitindo o reúso de código dos algoritmos nativos para outras implementações \cite{Lattner2004}. A LLVM também possui algoritmos envolvendo análise fluxo de dados (na forma de análise de intervalos de vida, por exemplo), que são essenciais para a implementação de um alocador de registradores eficiente \cite{Lattner2004, Leung1999}.
+

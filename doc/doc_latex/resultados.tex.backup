@@ -1,0 +1,86 @@
+\chapter{RESULTADOS E DISCUSSÃO}
+
+A primeira implementação prática dessa heurística foi feita por Ambrosio. Para nosso trabalho, achamos relevante o fato de que foram obtidos bons resultados. O processador alvo para os experimentos foi o Alpha, que tem como base uma arquitetura load/store do tipo RISC, com 64
+registradores de m\'aquina, dos quais 54 s\~ao aloc\'aveis. Destes, 23 s\~ao registradores de prop\'osito geral e 31 s\~ao de ponto
+flutuante. Os benchmarks usados foram: quicksort, resolu\c{c}\~ao da s\'erie de fibonacci, 
+bubsort,
+crivo de erat\'ostenes, multiplica\c{c}\~ao de matrizes, busca por profundidade, entre outros. Estes programas s\~ao aplica\c{c}\~oes
+bastante usadas e garantem a cobertura de diversos casos de grafos de fluxo de controle, n\'umero de vari\'aveis candidatas \`a
+aloca\c{c}\~ao e de depend\^encias entre fun\c{c}\~oes $\phi$. O crit\'erio de compara\c{c}\~ao entre os dois m\'etodos de
+Aloca\c{c}\~ao
+de Registradores, baseado em Crescimento de Dom\'{\i}nios Ativos e baseado na t\'ecnica de George e Appel, foi o n\'umero de 
+instru\c{c}\~oes
+de acesso \`a mem\'oria ({\em load} e {\em store}) inseridas no c\'odigo resultante da aloca\c{c}\~ao.
+
+O primeiro resultado importante observado foi o fato de o algoritmo de \cite{Ottoni2002}, ao contr\'ario da 
+aloca\c{c}\~ao de 
+\cite{Chatin1981}, n\~ao implementar a transforma\c{c}\~ao co\-nhe\-ci\-da como
+Combina\c{c}\~ao de Registradores, o {\em Register Coalesce}. Esta transforma\c{c}\~ao \'e uma varia\c{c}\~ao da propaga\c{c}\~ao de
+c\'opia, que elimina c\'opias de um registrador para outro. Nesta transforma\c{c}\~ao, procuram-se instru\c{c}\~oes de c\'opias de
+registradores no c\'odigo
+intermedi\'ario, da forma $s_{j} \leftarrow s_{i}$, tal que tanto $s_{i}$ como $s_{j}$ n\~ao interferem um com o outro, e nem $s_{j}$ 
+nem
+$s_{i}$ s\~ao guardados na mem\'oria entre a atribui\c{c}\~ao de c\'opia e o fim da rotina. Depois de achar tal instru\c{c}\~ao, o
+{\em Register Coalescing} procura a instru\c{c}\~ao que escreveu em $s_{i}$ e a modifica para colocar seu resultado em $s_{j}$ no lugar
+de $s_{i}$, e remove a instru\c{c}\~ao de c\'opia~\cite{muchnick}. Desta maneira, $s_{i}$ deixa de existir no c\'odigo do programa.
+
+Foi observado que o n\'umero de dom\'{\i}nios ativos era grande no m\'etodo implementado, al\'em de
+que o c\'odigo gerado por este m\'etodo continha muitas c\'opias de registradores desnecess\'arias. Com isso, foi tomada a decisão de
+implementar a tranforma\c{c}\~ao de {\em Register Coalesce} no m\'etodo de Aloca\c{c}\~ao
+Baseada no Crescimento de Dom\'{\i}nios Ativos. A transforma\c{c}\~ao foi implementada no in\'{\i}cio do algoritmo, depois de se 
+calcular 
+as
+{\em webs} e os dom\'{\i}nios ativos (necess\'arias para se verificar a exist\^encia de interfer\^encias entre os poss\'{\i}veis 
+candidatos 
+\`a
+combina\c{c}\~ao). O resultado foi bastante satisfat\'orio, reduzindo o 
+n\'umero 
+de
+dom\'{\i}nios ativos em m\'edia, em cerca de $40\%$. Pudemos observar, desta forma, que esta transforma\c{c}\~ao \'e muito importante 
+para
+este m\'etodo, n\~ao s\'o pela elimina\c{c}\~ao de instru\c{c}\~oes de c\'opia desnecess\'arias, mas tamb\'em pela diminui\c{c}\~ao do
+n\'umero de dom\'{\i}nios ativos.
+
+Por exemplo, no algoritmo quicksort, antes de se implementar a transforma\c{c}\~ao de {\em Coalesce}, o m\'etodo de Aloca\c{c}\~ao 
+Baseado em Crescimento de Dom\'{\i}nios Ativos identificou 109 dom\'{\i}nios ativos, al\'em de que no c\'odigo resultante existiam 
+v\'arias instru\c{c}\~oes de c\'opia desnecess\'arias, contendo ao todo, 156 instru\c{c}\~oes. Ap\'os a implementa\c{c}\~ao do {\em 
+Register Coalesce}, o n\'umero de dom\'{\i}nios ativos encontrados caiu para 64. O c\'odigo resultante passou para 
+112 instru\c{c}\~oes, eliminando 44 instru\c{c}\~oes de c\'opia desnecess\'arias.
+
+A segunda observa\c{c}\~ao importante foi o fato de que, em algumas situa\c{c}\~oes, o c\'odigo gerado pelo m\'etodo baseado em
+Crescimento de Dom\'{\i}nios Ativos continha instru\c{c}\~oes de {\em store} e {\em load}, enquanto que o gerado pelo m\'etodo de 
+colora\c{c}\~ao de 
+grafo n\~ao
+continha nenhuma instru\c{c}\~ao de acesso \`a mem\'oria. Nesse caso, a heurística perdeu eficiência se comparada com essas outras abordagens.
+
+    \begin{table}[h]
+        \begin{center}
+\begin{tabular}{|c|l|l|l|l|l|l|} \hline
+& \multicolumn{4}{|c|}{Load e Store} & \multicolumn{2}{c|}{Dom\'{\i}nios Ativos}\\ \hline
+Algoritmo & CG & 1CDA & 2CDA & 3CDA & CC & SC \\ \hline \hline
+teste & 0 & 0 & 0 & 0 & 21 & 12 \\ \hline
+fibonacci & 0 & 0 & 0 & 0 & 19 & 8 \\ \hline
+bubsort & 0 & 4 & 0 & 0 & 109 & 81 \\ \hline
+quicksort & 0 & 0 & 0 & 0 & 110 & 64 \\ \hline
+bfirst & 0 & 2 & 0 & 0 & 140 & 66 \\ \hline
+integer & 0 & 0 & 0 & 0 & 142 & 102 \\ \hline
+knight & 0 & 0 & 0 & 0 & 171 & 99 \\ \hline
+float1 & 0 & 0 & 0 & 0 & 41 & 20 \\ \hline
+matrixmul & 0 & 0 & 0 & 0 & 149 & 83 \\ \hline
+point2 & 0 & 0 & 0 & 0 & 132 & 70 \\ \hline
+rsieve & 0 & 0 & 0 & 0 & 55 & 27\\ \hline
+whetsto & 0 & 4 & 0 & 0 & 102 & 64\\ \hline
+\end{tabular}
+		\caption{instru\c{c}\~oes de {\em load} e {\em store} e dom\'{\i}nios ativos antes e depois do {\em Coalesce}}
+        	\label{tabSpills}
+    	\end{center}
+    \end{table}
+
+
+A Tabela \ref{tabSpills}, mostra para cada um dos algoritmos no benchmark testado, o n\'umero de instru\c{c}\~oes de {\em load} e {\em 
+store} obtido: I) pelo m\'etodo de colora\c{c}\~ao de grafos (CG), II) pela primeira implementa\c{c}\~ao do m\'etodo baseado crescimento 
+de dom\'{\i}nios ativos sem considerar todos os blocos b\'asicos no custo de $\phi$ (1CDA), III) pela implementa\c{c}\~ao do m\'etodo baseado em 
+crescimento de dom\'{\i}nios ativos com interfer\^encia entre vari\'aveis vivas (2CDA), IV) pela implementa\c{c}\~ao do m\'etodo que considera todos os 
+blocos b\'asicos no custo de $\phi$~ (3CDA). As duas \'ultimas colunas mostram as implementa\c{c}\~oes sem (SC) e com (CC)
+{\em Coalesce}.
+

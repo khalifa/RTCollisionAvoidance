@@ -1,0 +1,21 @@
+\select@language {brazil}
+\contentsline {chapter}{\numberline {1}INTRODU\IeC {\c C}\IeC {\~A}O}{8}
+\contentsline {section}{\numberline {1.1}Motiva\IeC {\c c}\IeC {\~a}o}{8}
+\contentsline {section}{\numberline {1.2}Objetivo}{9}
+\contentsline {section}{\numberline {1.3}Organiza\IeC {\c c}\IeC {\~a}o do Trabalho}{9}
+\contentsline {chapter}{\numberline {2}CONTEXTUALIZA\IeC {\c C}\IeC {\~A}O E CONCEITOS RELEVANTES}{10}
+\contentsline {section}{\numberline {2.1}Exame de Eletrocardiograma}{10}
+\contentsline {section}{\numberline {2.2}Ger\IeC {\^e}ncia Integrada de Sistemas de Diagn\IeC {\'o}stico Cl\IeC {\'\i }nico}{11}
+\contentsline {section}{\numberline {2.3}Software Pyramis}{11}
+\contentsline {section}{\numberline {2.4}C\IeC {\'o}digo Minnesota}{11}
+\contentsline {chapter}{\numberline {3}METODOLOGIA}{13}
+\contentsline {section}{\numberline {3.1}Tipo de Pesquisa}{13}
+\contentsline {section}{\numberline {3.2}Especificidades T\IeC {\'e}cnicas}{13}
+\contentsline {section}{\numberline {3.3}Execu\IeC {\c c}\IeC {\~a}o de Atividades}{15}
+\contentsline {chapter}{\numberline {4}DESENVOLVIMENTO DO TRABALHO}{17}
+\contentsline {section}{\numberline {4.1}Caracter\IeC {\'\i }sticas do Simulador}{17}
+\contentsline {section}{\numberline {4.2}Caracter\IeC {\'\i }sticas do Sistema em Tempo Real}{18}
+\contentsline {section}{\numberline {4.3}Implementa\IeC {\c c}\IeC {\~a}o}{19}
+\contentsline {chapter}{\numberline {5}RESULTADOS E DISCUSS\IeC {\~A}O}{20}
+\contentsline {chapter}{\numberline {6}CONCLUS\IeC {\~O}ES E TRABALHOS FUTUROS}{21}
+\contentsline {chapter}{Refer\^encias Bibliogr\'aficas}{22}

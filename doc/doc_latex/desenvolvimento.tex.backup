@@ -1,0 +1,252 @@
+\chapter{DESENVOLVIMENTO DO TRABALHO}
+
+O desenvolvimento do trabalho ocorreu por duas frentes: a utilização da ferramenta LLVM e o entendimento do algoritmo de alocação de registradores. A primeira linha consistiu na familiarização com a utilização da ferramenta e com a estrutura do LLVM. A segunda frente consistiu do estudo aprofundado da teoria e da implementação das abordagens de alocação de registradores em especial da heurística baseada em Crescimento de Domínio Ativo.
+
+
+\section{Metodologia}
+
+
+O ambiente de desenvolvimento do trabalho possui configurações fixas. O sistema operacional utilizado é a distribuição Linux Ubuntu versão 11.10. Utilizaremos para os testes uma configuração de hardware que consiste de um processador Intel® Core™ i5-2410M CPU @ 2.30GHz x 4 e memória principal com tecnologia DDR3 de 4GB. Tais informações são importante do ponto de vista da metodologia pois, em etapas posteriores, irão ser realizadas avaliações de vários algoritmos de alocação e serão comparados seus desempenhos e tempo de execução. Tais medidas são relevantes mas também iremos analisar uma métrica muito comum para alocadores de registradores que é o número de derramamentos para memória.
+
+\subsection{Execução de Atividades}
+
+O trabalho será realizado em dois semestres e as tarefas serão divididas em várias etapas. O cronograma a seguir apresenta as etapas realizadas durante esse primeiro semestre de desenvolvimento.
+
+\emph{Etapa 1:} Levantamento bibliográfico. De 08/08/11 a 05/09/11. Essa etapa compreendeu a realização de um levantamento bibliográfico de todo o material relacionado com o LLVM, o alocador de domínio ativo e demais alocadores de registradores. Em especial os dois artigos, \cite{Ambrosio2004} e \cite{Ottoni2002}, foram lidos com atenção e eventuais dúvidas levantadas foram discutidas. Os artigos se mostraram esclarecedores e o algoritmo de alocação de registradores utilizando a técnica de expansão de domínios ativos foi entendida. Algumas referências contidas nos artigos forma consideradas de suma importância para tal entendimento. Essas referências também foram levantadas e estudadas.
+
+\emph{Etapa 2:} Familiarização com o LLVM. De 06/09/11 a 04/10/11. Nessa etapa aprendemos a utilizar o LLVM como ferramenta de compilação. Aprendemos os passos de instalação e execução além das especificidades das ferramentas contidas no LLVM. Passamos então para a fase de entendimento da estrutura modular desse programa. Identificamos os módulos que estariam envolvidos na alocação de registradores. Fizemos algumas alterações experimentais incluindo a criação de um passo simples.
+
+\emph{Etapa 3:} Estudo de alocadores de registradores. De 05/10/11 a 21/11/11. Efetuamos um estudo dos alocadores de registradores implementados para o LLVM e identificamos pontos fortes e fracos, ou seja, casos nos quais os alocadores não são muito eficientes e nos quais eles são, sendo assim identificamos suas aplicações e usos. Paralelamente, nos aprofundamos no estudo do alocador de registradores baseado em crescimento de domínio ativo.
+w
+\emph{Etapa 4:} Escrita do relatório. De 08/08/11 a 07/12/11. Essa etapa ocorreu concomitantemente com as outras etapas do trabalho. Ao final, concluímos o relatório, maturamos os resultados e documentamos o trabalho.
+
+A Tabela \ref{tabCronograma}, apresentada a seguir, mostra o cronograma de execução das etapas previstas para o projeto.
+
+    \begin{table}[h]
+        \begin{center}
+    		\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+    			\hline
+                \textbf{Etapa / Data} & 08/08 & 05/09 & 06/09 & 04/10 & 05/10 & 21/11 & 08/08 & 07/12 \\ \hline
+1 & início & término &  &  &  &  &  &  \\ \hline
+2 &  &  & início & término &  &  &  &  \\ \hline
+3 &  &  &  &  & início & término &  &  \\ \hline
+4 & início &  &  &  &  &  &  & término \\ \hline
+    		\end{tabular}
+    		\caption{Cronograma de realização das etapas do primeiro semestre}
+        	\label{tabCronograma}
+    	\end{center}
+    \end{table}
+
+
+\section{Utilização da Ferramenta}
+
+\subsection{Instalação e Configuração do LLVM}
+
+O LLVM é um compilador complexo, portanto possui várias configurações de compilação, instalação e execução. Esta é mais uma característica que comprova a sua maleabilidade para diversas arquiteturas e linguagens. Nesta seção descreveremos como compilar e executar o LLVM a partir do seu fonte. Todos os arquivos podem ser encontrados no sitio:
+\begin{verbatim}
+http://llvm.org/releases/ 
+\end{verbatim}
+
+Faça download do front-end para a linguagem C chamado ``llvm-gcc''. Descompacte o arquivo para utilizar o programa:
+\begin{verbatim}
+gunzip --stdout llvm-gcc-version.tgz | tar -xvf - 
+\end{verbatim}
+
+Faça download da versão desejada do LLVM. Descompacte o arquivo, configure e instale o programa:
+\begin{verbatim}
+gunzip --stdout llvm-version.tgz | tar -xvf
+cd llvm-version
+./configure
+make 
+\end{verbatim}
+
+Agora o programa pode ser utilizado para gerar código binário, byteCode, assembly do LLVM ou assembly do x86.
+\begin{verbatim}
+ ./~/llvm/llvm-2.9/Release/bin/
+
+>>> C code --> binary
+llvm-gcc file.c -o file.out
+
+>>> C code --> llvm byteCode
+llvm-gcc file.c -o file.bc -c -emit-llvm
+
+>>> C code --> llvm assembly
+llvm-gcc file.c -o file.ll -S -emit-llvm
+
+>>> llvm assembly --> llvm biteCode
+llvm-as file.ll -o file.bc
+
+>>> llvm biteCode --> llvm assembly
+llvm-dis file.bc -o file.ll (faz o inverso)
+
+>>> llvm biteCode --> x86 assembly
+llc file.bc -o file.s (do bytecode llvm)
+
+>>> llvm assembly --> x86 assembly
+llc file.ll -o file.s (do assembly llvm)
+
+>>> x86 assembly --> x86 binary
+as file.s -o file.o
+gcc file.o -o file.out
+\end{verbatim}
+
+
+\subsection{Implementação de um Passo}
+
+Nesta seção discutiremos a estrutura básica de um passo por meio de um exemplo bem simples. Depois é discutida como deveria ser a estrutura de um passo para alocadores de registradores.
+Primeiro é necessário criar um Makefile. Para que o seu passo seja compilado e ligado à estrutura do LLVM. Um exemplo simples pode ser visto a seguir.
+\begin{verbatim}
+# Makefile for hello pass
+# Caminho até o diretóio do LLVM
+LEVEL = ../../..
+# Nome da Biblioteca a ser construída
+LIBRARYNAME = Hello
+# Fazer com que o pass seja carregado por ferramentas do LLVM
+LOADABLE_MODULE = 1
+# Incluir o makefile na implementação
+include $(LEVEL)/Makefile.common
+\end{verbatim}
+
+A seguir apresentamos um passo básico que possui a simples função de imprimir no terminal o nome das funções que o programa a ser compilado possui. Para isso o passo não modifica o programa, apenas o inspeciona.
+\begin{verbatim}
+1. #include "llvm/Pass.h"
+2. #include "llvm/Function.h"
+3. #include "llvm/Support/raw_ostream.h"
+4. using namespace llvm;
+5. namespace {
+6. struct Hello : public FunctionPass {
+7. static char ID;
+8. Hello() : FunctionPass(ID) {}
+9. virtual bool runOnFunction(Function &F) {
+10. errs() << "Hello: " << F.getName() << "\n";
+11. return false;
+12. }
+13. };
+14.
+15. char Hello::ID = 0;
+16. static RegisterPass<Hello> X("hello", "Hello World Pass", false, false);
+17. }
+\end{verbatim}
+
+Sobre esse código cabem alguns comentários para o melhor entendimento. Nas Linhas de 1 a 3 incluimos os arquivos Pass.h, pois estamos escrevendo um passo, e Function.h, pois estamos operando sobre as funções do programa. A inclusão da biblioteca \textit{rawostream.h} nos permite imprimir algo. Nas linhas 7 e 8 declara-se um identificador para o passo. Cada passo do LLVM possui seu identificador. Por fim, na Linha 16 registramos a nossa classe Hello, dando a ela um argumento que será usado na linha de comando ao compilar o passo.
+
+\subsection{Compilação e Execução}
+
+Concluídos o Makefile e o passo basta executar o makefile com o seguinte comando no terminal:
+\begin{verbatim}
+  make
+\end{verbatim}
+Assim será gerado o arquivo Hello.so no diretório que é o passo compilado. Para executá-lo use os seguintes comandos:
+\begin{verbatim}
+  opt -load ../../../Debug+Asserts/lib/Hello.so -hello < hello.bc > /dev/null
+\end{verbatim}
+Este comando usa a ferramenta do LLVM opt para acessar o seu passo fazendo o carregamento dinâmico do passo e acionando o passo como argumento registrado, no caso \textit{-hello}. Após executar este comando, é impresso no terminal os nomes das funções que a entrada, o programa em biteCode \textit{hello.bc}, possui concluindo assim o objetivo do passo.
+
+\subsection{Alocadores de Registradores Existentes no LLVM}
+
+O LLVM possui três alocadores de registradores diferentes, o Linear Scan \cite{Poletto1999, Mossenbock2002}, o Greedy Register Allocator e o Alocador \cite{Pereira2005} de Registrador Básico \cite{Regallocasic}.
+
+\emph{Linear Scan Register Allocator}: O Linear Scan usa um algorítimo de alocação de registradores global, não baseado na coloração de grafos. Ele se comporta da seguinte maneira: dado o tempo de vida (live range) das variáveis em uma função, o algoritmo escaneia todos os tempos de vida alocando as variáveis de forma gulosa. O algoritmo é simples, eficiente e produz um código relativamente limpo. E útil em situações que requerem um bom tempo de compilação e um claro entendimento.
+
+\emph{Greedy Register Allocator}: O Greedy Register Allocator também é baseado em solução gulosa. Ele se tornou o alocador de registradores default do LLVM.
+
+\emph{Basic Register Allocator}: O Basic Register Allocator é um exemplo didático de como criar um alocador de registradores para o LLVM. Esse alocador não promove otimização de código, ele simplesmente analisa a vida dos registradores e derrama-os sempre que não há registradores disponíveis. Sua importância está no fato de que ele é utilizado como base para implementar novos alocadores.
+
+
+\section{Algorítmo Baseado no Crescimento de Domínios Ativos}
+
+\subsection{Algorítmo Original}
+
+A implementação original proposta por Ottoni em 2002 \cite{Ottoni2002} pode ser descrita pelo pseudo-algoritmo a seguir.
+\begin{verbatim}
+make_webs;
+live_ranges = webs;
+insert_phis;
+make_interferences;
+create_DGgraph;
+while (numLiveRanges > numRegs) do
+    make_rcr;
+    emit_instructions_independents_phi;
+    solution_phi_functions;
+substitute_liveRanges_regs;
+\end{verbatim}
+
+A seguir a discussão do código passando por cada função:
+\begin{itemize}
+ \item \emph{make webs:} percorre todo o código procurando web's.
+ \item \emph{insert phis:} calcula a fronteira de dominância iterada de cada domínio ativo encontrado e insere uma função $\phi$ relativa a este domínio ativo no início do bloco básico pertencente à fronteira de dominância iterada.
+ \item \emph{make interferences:} insere uma interferência entre domínios ativos que são operados em uma mesma instrução. Esta interferência garante que estes domínios ativos não são unidos impedindo-os de serem alocados a um mesmo registrador.
+ \item \emph{create DGgraph:} cria o grafo de dependência entre as funções $\phi$.
+ \item \emph{make rcr:} faz a análise de fluxo de dados Alcançabilidade e Consistência de Registradores
+ \item \emph{emit instructions independents phi:} calcula o conjunto mínimo de instruções para obter o conteúdo do registrador necessário para cada referência que não depende da solução de funções $\phi$, valendo-se da propriedade de que, após a inserção das
+funções phi, toda referência a alguma variável do domínio ativo é alcançada por um único estado de registrador.
+ \item \emph{solution phi function:} insere as instruções dependentes das soluções das funções $\phi$.
+ \item \emph{substitute liveRanges regs:} ao final do algoritmo, substitui as referências: variáveis, registradores virtuais, temporários, pelos respectivos registradores alocados a eles.
+\end{itemize}
+
+A função de resolução das funções $\phi$ é essencial e é mostrada a seguir:
+\begin{verbatim}
+procedure solution_phi_function()
+  form_pairs;
+  for each pair do
+    if not(phi depends on another phi) then
+      case_analysis;
+      trace_basic_blocks;
+    else
+      brute_force_heuristic;
+      case_analysis;
+      trace_basic_blocks;
+    endif
+  endfor
+  cost = infinity;
+  for each pair do
+    if (pair->cost < cost) do
+      cost = pair->cost;
+      merge = cost;
+    endif
+    merge_pair(merge);
+  endfor
+\end{verbatim}
+
+A seguir a discussão do código de resolução da função phi explicando as funções envolvidas.
+\begin{itemize}
+  \item \emph{form pairs:} forma os pares de domínios ativos que terão o custo de sua união tetado, desde que estes pares não interfiram entre si e cujas variáveis tenham o mesmo tipo.
+  \item \emph{case analysis:} dada uma função phi, para se avaliar o custo de uma solução, deve-se analisar todas as referências o programa que:
+    \subitem são alcançadas por phi;
+    \subitem são alcançadas pelo registrador com uma variável em estado indefinido;
+    \subitem alcançam phi;
+  \item \emph{brute force heuristic:} encontra a solução de uma função phi que depende de outra. Uma abordagem é tentar todas as suas
+  possíveis soluções, e escolher a que resultar em um menor custo.
+  \item \emph{merge pair:} apos comparar-se o custo de todas as uniões e escolher a de menor custo, efetua a união.
+\end{itemize}
+
+
+\subsection{Melhorias Propostas por Ambrosio}
+
+Essa proposta original foi adaptada por Ambrosio et all \cite{Ambrosio2004} para uma arquitetura mais genérica e, mais relevante para nosso trabalho, foram adicionado algumas melhorias
+
+\begin{verbatim}
+make_webs;
+live_ranges = webs;
+
+make_coalesce;
+
+insert_phis;
+make_interferences;
+create_DGgraph;
+while (numLiveRanges > numRegs) do
+    make_rcr;
+    emit_instructions_independents_phi;
+    solution_phi_functions;
+substitute_liveRanges_regs;
+\end{verbatim}
+
+A principal melhoria proposta foi a inclusão da função a seguir.
+
+\emph{make coalesce:} faz a transformação de Combinação de Registradores. Ela percorre o código do programa, procurando por instruções de move. Quando as encontra, se os domínios ativos fonte e destino da instrução de cópia não interferirem entre si, e o domínio ativo destino da cópia não for armazenado na memória em nenhuma instrução de cópia, a instrução de cópia é removida e o operando usado pela instrução de cópia é substituído pelo operando destino da cópia em todo o programa. Ou seja, o domínio ativo que era usado na instrução de cópia é removido do programa, e suas referências substituídas por referências ao domínio ativo destino da instrução de cópia.
+
+
+\section{Conclusão}
+
+
+Esta seção mostra suscintamente o resultado de nosso trabalho desse semestre.

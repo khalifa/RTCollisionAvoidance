@@ -1,0 +1,56 @@
+\chapter{DESENVOLVIMENTO DO TRABALHO}
+
+O desenvolvimento do trabalho ocorreu seguindo as etapas do cronograma e em alguns momentos novas demandas surgiram e adicionaram mais tarefas ao trabalho inicialmente proposto. Nessa Seção iremos descrever os achados e a evolução desse desenvolvimento bem como as principais ferramentas complementares desenvolvidas.
+Nesse capítulo são apresentadas as requisitos/características que o simulador precisa ter e as suas restrições. Também, são apresentadas todas as características de um sistema em tempo real, as restrições temporais, o escalonamento de tarefas e suas abordagens. Por fim, são apresentados os detalhes sobre a implementação do simulador e do servidor do sistema.
+
+
+\section{Características do Simulador}
+
+As principais características do simulador são:
+Mapa: o mapa contém toda lógica de trânsito funcionando em tempo real. O mapa é  composto de quarteirões cujas dimensões estão definidas em um arquivo de entrada. Ele está modelado como uma grade onde cada célula será um dos seguintes componentes:
+Via;
+Cruzamento;
+Calçada;
+Radar: Em cada via, próximo a um cruzamento, há um radar que envia informações para o sistema. O radar detecta a direção de cada veículo e o tempo para este chegar ao cruzamento.
+
+Via: Cada via é de mão dupla e contínua, o fim de uma via denota o começo dessa mesma via. Cada veículo tem tráfego livre pelas vias e uma velocidade constante.  Ao passar por um cruzamento, o veículo decide aleatoriamente a próxima direção a ser seguida.
+
+Carro: Os estados de um carro são: “em movimento” ou “parado esperando”. O comportamento padrão de um carro é parar impreterivelmente antes de cada cruzamento e esperar até que o sistema autorize-o a continuar a sua trajetória. Nesse caso, essa tarefa apresenta uma característica soft real-time (quando as consequências de uma falha devida ao tempo é da mesma ordem de grandeza que os benefícios do sistema em operação normal[5]), ou seja, o carro fica ocioso, mas não há colisão/acidente.
+Ambulância: O estado de uma ambulância é sempre em movimento. Ela tem prioridade sobre os carros e não esperam pela decisão do sistema, ou seja, sempre que uma ambulância se aproximar de um cruzamento ela continua a sua trajetória sem paradas ou esperas. Um dos cenários de testes desse trabalho envolve a observar como o sistema se comporta quando há carros e ambulâncias nas vias. Esse caso se caracteriza com uma situação hard real-time (quando as consequências de pelo menos uma falha temporal excedam em muito os benefícios normais do sistema (falha catastrófica)[5]), pois se o sistema não responder no tempo correto, há colisão/acidente.
+
+Nesse trabalho, são avaliados pontos de quebra do sistema nos quais uma quantidade excessiva de veículos (carros e ambulâncias) seja colocada no simulador. Quando isso ocorre o sistema falha e consequentemente as colisões/acidentes acontecem. Porém, os limites do sistema foram determinados com experimentos previstos para a etapa posterior a implementação e estão apresentados no capítudo 4 desse trabalho.
+
+\section{Características do Sistema em Tempo Real}
+
+O Sistema em Tempo Real é regido por um relógio cujo iterador é incrementado a cada ciclo. Todas as referências temporais feitas nessa seção devem ser interpretadas como ciclos de relógio (quando no contexto de intervalo de tempo) ou valor do iterador do relógio (quando no contexto de um valor de tempo).
+
+No simulador todos os veículos praticam uma velocidade constante de percorrer uma célula do mapa por ciclo de relógio.
+Tarefa do Sistema
+O sistema trata diferentes tipos de tarefas, são elas: processamento de informação e envio ou recebimento de sinais. Todas essas tarefas são aperiódicas e estão listadas a seguir:
+{O professor recomendou fortemente que umas das tarefas do radar seja periódica}
+
+TratarInformacaoRadar: essa tarefa é responsável por receber as informações do radar quando esse detecta um veículo passando por ele. A informação é composta pelos seguintes dados:
+O identificado do veículo;
+A direção corrente do veículo (norte, sul, leste, oeste);
+O tempo para a chegada do veículo ao próximo cruzamento. O tempo para chegar ao cruzamento é determinado pela distância para o cruzamento, já que todos os veículos praticam uma velocidade constante. Tendo como base essas informações o sistema calcula a possibilidade de colisão nos cruzamentos e assim decide qual informação enviar para o veículo. O tempo de sistema necessário para realização dessa tarefa será de 1 a 10 ciclos de relógio.
+SinalizarCarro: essa tarefa é responsável por informar a um veículo parado no cruzamento que ele pode seguir a sua trajetória, passando pelo cruzamento, a partir de um determinado período de tempo. O tempo de sistema necessário para realização dessa tarefa será de 1 a 5 ciclos de relógio.
+SinalizarAmbulância: essa tarefa é responsável por informa a uma ambulância que ela deve parar por um período de tempo. O tempo de sistema necessário para realização dessa tarefa será de 1 a 5 ciclos de relógio. Nesse caso, se o tempo de resposta for superior ao deadline da tarefa (tempo em que a ambulância chega ao cruzamento) essa tarefa não passa no teste de aceitação e não é tratada pelo sistema.
+ Essa é uma decisão de que será discutida posteriormente.
+
+O tratamento de tarefas que envolver as ambulâncias (veículos impetuosos) deve ter uma prioridade maior do que as dos demais veículos (veículos cautelosos) para que o sistema priorize a prevenção das colisões.
+
+As tarefas têm início quando um veículo é detectado pelo radar. Nesse instante, o sistema recebe as informações sobre a direção que esse veículo está seguindo, verifica qual o cruzamento mais próximo dele e então calcula o tempo que o veiculo levará para chegar a esse cruzamento.
+
+O tempo de sistema necessário para a execução de cada tarefa é definido aleatoriamente entre um intervalo de valores, isso simula aspectos da realidade onde o atraso na troca de mensagens e no processamento pode sofrer alguma variação. Outro motivo para essa decisão é que isso torna o escalonamento de tarefas mais heterogênio e também, mais interessante.
+
+\section{Implementação}
+
+
+A implementação foi feita na linguagem Java de forma colaborativa entre os participantes do grupo. O repositório do projeto pode ser encontrado em:
+https://github.com/khalifa/RTCollisionAvoidance
+
+Uma das frentes de implementação foi criar um mapa na forma de um grafo onde os vértices são os radares e as arestas são as vias. Os veículos passaram a ter origem e destino, então foi desenvolvido o algoritmo de Busca em Largura, para encontrar o menor caminho entre os dois pontos. Cada veículo agora sabe o seu percurso e quando chegar a um radar (vértice do grafo), esperará ou não para seguir em frente.
+Ainda nessa etapa, foi criada uma fila com todos os radares para que esse seja tratado pelo servidor.
+
+As próximas etapas dessa frente é criar as filas para os veículos cautelosos e para os veículos de ambulância e o algoritmo de escalonamento de tarefas para o tratamento das filas. Uma extensão desse cenário é ativar ou desativar algum(s) radares, assim as vias para chegar ao(s) radar(es) serão disponibilizadas ou interditadas, respectivamente; e em tempo real um novo percurso deverá ser recalculado.
+

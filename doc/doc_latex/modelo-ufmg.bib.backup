@@ -1,0 +1,97 @@
+
+@ARTICLE{Ambrosio2004,
+  AUTHOR =      {Luciana Leal Ambrosio and Mariza A. S. Bigonha and Roberto da Silva Bigonha},
+  TITLE =       {Alocação global de registradores baseada em crescimento de domínios ativos e combinação de registradores},
+  JOURNAL =   	{8 Simpósio Brasileiro de Linguagens de Programação},
+  YEAR =        {2004},
+  PAGES =      	{157-171}
+}
+
+@ARTICLE{Lattner2004,
+  AUTHOR =      {Chris Lattner and Vikram S. Adve},
+  TITLE =       {Llvm A compilation framework for lifelong program analysis and transformation},
+  JOURNAL =   	{CGO, IEEE},
+  YEAR =        {2004},
+  PAGES =      	{75-88}
+}
+
+@ARTICLE{Leung1999,
+  AUTHOR =      {Allen Leung and Lal George},
+  TITLE =       {Static single assignment form for machine code},
+  JOURNAL =   	{PLDI, ACM},
+  YEAR =        {1999},
+  PAGES =      	{204-214}
+}
+
+@ARTICLE{Mossenbock2002,
+  AUTHOR =      {Hanspeter Mossenbock and Michael Pfeiffer},
+  TITLE =       {Linear scan register allocation in the context of SSA form and register constraints},
+  JOURNAL =   	{CC, LNCS},
+  YEAR =        {2002},
+  PAGES =      	{229-246}
+}
+
+@MASTERSTHESIS{Ottoni2002,
+  AUTHOR =      {Guilherme Lima Ottoni},
+  TITLE =       {Alocação global de registradores de endereçamento para referências a vetores em dsps},
+  PUBLISHER =  	{Universidade Estadual de Campinas (UNICAMP)},
+  YEAR =        {2002}
+}
+
+@ARTICLE{Pereira2005,
+  AUTHOR =      {Fernando Magno Quintao Pereira and Jens Palsberg},
+  TITLE =       {Register allocation via coloring of chordal graphs},
+  JOURNAL =   	{APLAS 05, Asian Symposium on Programming Languages and Systems},
+  YEAR =        {2005},
+  PAGES =      	{315-329}
+}
+
+@PHDTHESIS{Pereira2008,
+  AUTHOR =      {Fernando Magno Quintao Pereira},
+  TITLE =       {Register Allocation by Puzzle Solving},
+  SCHOOL =  	{University of California},
+  YEAR =        {2008}
+}
+
+@BOOK{Andrew2002,
+  AUTHOR =      {Andrew W. Appel and Jens Palsberg},
+  TITLE =       {Modern Compiler Implementation in Java},
+  PUBLISHER = 	{Cambridge University Press},
+  YEAR =        {2002},
+  EDITION = 	{2}
+}
+
+@PHDTHESIS{Briggs1992,
+  AUTHOR =      {Preston Briggs},
+  TITLE =       {Register Allocation via Graph Coloring},
+  SCHOOL =   	{Rice University},
+  YEAR =        {1992},
+}
+
+@ARTICLE{Chatin1981,
+  AUTHOR =      {Gregory J. Chaitin and Mark A. Auslander},
+  TITLE =       {Register allocation via coloring},
+  JOURNAL =   	{Computer Languages},
+  YEAR =        {1981},
+  PAGES =      	{47-57}
+}
+
+@BOOK{Muchnick1997,
+  AUTHOR =      {Steven S. Muchnick},
+  TITLE =       {Advanced Compiler Design and Implementation},
+  PUBLISHER = 	{Morgan Kaufmann},
+  YEAR =        {1997}
+}
+
+@BOOK{Poletto1999,
+  AUTHOR =	{Massimiliano Poletto and Vivek Sarkar},
+  TITLE = 	{Linear scan register allocation},
+  PAGES =	{895–913},
+  YEAR =	{1999},
+  PUBLISHER = 	{Toplas}
+}
+Regallocbasic.cpp - basic register allocator. . Accessed: 13/08/2011.
+@ONLINE{RegallocBasic,
+  TITLE =	{Basic register allocator - Regallocbasic.cpp},
+  URL = 	{http://llvm.org/docs/doxygen/html/RegAllocBasic_8cpp_source.html}
+}

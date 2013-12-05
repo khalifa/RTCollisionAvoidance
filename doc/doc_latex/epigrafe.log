@@ -1,0 +1,280 @@
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.11.23)  23 NOV 2011 21:40
+entering extended mode
+ %&-line parsing enabled.
+**epigrafe.tex
+(./epigrafe.tex
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, portuguese, loaded.
+! Undefined control sequence.
+l.5 \pretextualchapter
+                      {}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.7 \begin{flushright}
+                      
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Overfull \hbox (20.0pt too wide) in paragraph at lines 7--7
+[] 
+ []
+
+
+Overfull \hbox (11.6667pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 ``If
+ []
+
+
+Overfull \hbox (15.5556pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 you
+ []
+
+
+Overfull \hbox (13.36113pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 are
+ []
+
+
+Overfull \hbox (5.00002pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 a
+ []
+
+
+Overfull \hbox (16.72224pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 stu-
+ []
+
+
+Overfull \hbox (19.1667pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 dent
+ []
+
+
+Overfull \hbox (15.5556pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 you
+ []
+
+
+Overfull \hbox (28.38896pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 should
+ []
+
+
+Overfull \hbox (11.11113pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 al-
+ []
+
+
+Overfull \hbox (20.88892pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 ways
+ []
+
+
+Overfull \hbox (13.33336pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 get
+ []
+
+
+Overfull \hbox (5.00002pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 a
+ []
+
+
+Overfull \hbox (21.11119pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 good
+ []
+
+
+Overfull \hbox (26.4445pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 nights
+ []
+
+
+Overfull \hbox (21.16669pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 sleep
+ []
+
+
+Overfull \hbox (26.22226pt too wide) in paragraph at lines 12--12
+ []\OT1/cmr/m/n/10 unless
+ []
+
+
+Overfull \hbox (15.5556pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 you
+ []
+
+
+Overfull \hbox (19.72226pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 have
+ []
+
+
+Overfull \hbox (22.22226pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 come
+ []
+
+
+Overfull \hbox (8.88892pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 to
+ []
+
+
+Overfull \hbox (13.88892pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 the
+ []
+
+
+Overfull \hbox (21.11119pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 good
+ []
+
+
+Overfull \hbox (18.36116pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 part
+ []
+
+
+Overfull \hbox (8.05559pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 of
+ []
+
+
+Overfull \hbox (19.47227pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 your
+ []
+
+
+Overfull \hbox (24.16676pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 book,
+ []
+
+
+Overfull \hbox (16.11116pt too wide) in paragraph at lines 12--12
+ []\OT1/cmr/m/n/10 and
+ []
+
+
+Overfull \hbox (19.44449pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 then
+ []
+
+
+Overfull \hbox (15.5556pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 you
+ []
+
+
+Overfull \hbox (28.38896pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 should
+ []
+
+
+Overfull \hbox (17.83337pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 stay
+ []
+
+
+Overfull \hbox (11.11115pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 up
+ []
+
+
+Overfull \hbox (10.55559pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 all
+ []
+
+
+Overfull \hbox (22.50006pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 night
+ []
+
+
+Overfull \hbox (16.11116pt too wide) in paragraph at lines 12--12
+ []\OT1/cmr/m/n/10 and
+ []
+
+
+Overfull \hbox (11.11113pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 let
+ []
+
+
+Overfull \hbox (19.47227pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 your
+ []
+
+
+Overfull \hbox (30.0556pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 school-
+ []
+
+
+Overfull \hbox (21.13893pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 work
+ []
+
+
+Overfull \hbox (13.61116pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 fall
+ []
+
+
+Overfull \hbox (10.55559pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 by
+ []
+
+
+Overfull \hbox (13.88892pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 the
+ []
+
+
+Overfull \hbox (20.2778pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 way-
+ []
+
+
+Overfull \hbox (24.50005pt too wide) in paragraph at lines 12--12
+ \OT1/cmr/m/n/10 side.''
+ []
+
+
+Overfull \hbox (39.65952pt too wide) in paragraph at lines 12--13
+ []\OT1/cmr/bx/n/10 Lemony
+ []
+
+
+Overfull \hbox (36.25676pt too wide) in paragraph at lines 12--13
+ \OT1/cmr/bx/n/10 Snicket
+ []
+
+)
+! Emergency stop.
+<*> epigrafe.tex
+                
+*** (job aborted, no legal \end found)
+
+ 
+Here is how much of TeX's memory you used:
+ 8 strings out of 495041
+ 162 string characters out of 1181896
+ 46131 words of memory out of 3000000
+ 3290 multiletter control sequences out of 15000+50000
+ 3948 words of font info for 15 fonts, out of 3000000 for 9000
+ 30 hyphenation exceptions out of 8191
+ 16i,1n,15p,94b,140s stack positions out of 5000i,500n,10000p,200000b,50000s
+!  ==> Fatal error occurred, no output PDF file produced!
