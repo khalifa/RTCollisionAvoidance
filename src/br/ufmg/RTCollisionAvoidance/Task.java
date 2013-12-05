@@ -1,6 +1,6 @@
 package br.ufmg.RTCollisionAvoidance;
 
-public class Tarefa {
+public class Task {
 	
 	private int prioridade;
 	private int tempoDeExec;

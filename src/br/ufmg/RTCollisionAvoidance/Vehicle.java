@@ -1,7 +1,5 @@
 package br.ufmg.RTCollisionAvoidance;
 
-import java.util.Random;
-
 import br.ufmg.RTCollisionAvoidance.Cell.CellType;
 
 
@@ -20,6 +18,7 @@ public class Vehicle {
 	Direction direction;
 	boolean stop;
 	boolean sendSignal;
+	boolean waiting;
 	int posX, posY;
 	int id;
 	Cell cell;
@@ -29,11 +28,12 @@ public class Vehicle {
 		this.direction = direction;
 		this.cell = cell;
 		this.id = id;
-		sendSignal = true;
-		if(type == VehicleType.AMBULANCE){
-			stop = false;
-		} else if (type == VehicleType.CARR){
-			stop = true;
+		this.waiting = false;
+		this.sendSignal = true;
+		if(this.type == VehicleType.AMBULANCE){
+			this.stop = false;
+		} else if (this.type == VehicleType.CARR){
+			this.stop = true;
 		}
 		
 	}
@@ -57,29 +57,30 @@ public class Vehicle {
 			nextCell = this.cell.neighW;
 		}
 		if(nextCell.type == CellType.CROSSROAD && stop == true){
-			
+			this.waiting = true;
 		} else {
+			this.waiting = false;
 			this.cell = nextCell;
 		}
 	}
 	
 	public void print(){
-		System.out.print(this.id);
-		/*
+		//System.out.print("[" + this.id + "]");
+		
 		switch(this.direction){
 		case NORTH:
-			System.out.print("N");
+			System.out.print("▲");
 			break;
 		case SOUTH:
-			System.out.print("S");
+			System.out.print("▼");
 			break;
 		case EAST:
-			System.out.print("E");
+			System.out.print("▶");
 			break;
 		case WEAST:
-			System.out.print("W");
+			System.out.print("◀");
 			break;
-		}*/
+		}
 	}
 	
 }

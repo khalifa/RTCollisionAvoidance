@@ -20,7 +20,7 @@ public class Cell {
 		
 		switch (type) {
 		case STREET_HORIZONTAL:
-			System.out.print("-");
+			System.out.print("−");
 			break;
 		case STREET_VERTICAL:
 			System.out.print("|");
@@ -29,7 +29,7 @@ public class Cell {
 			System.out.print("+");
 			break;
 		case PAVEMENT:
-			System.out.print(" ");
+			System.out.print("□");
 			break;
 		case RADAR:
 			System.out.print("#");
