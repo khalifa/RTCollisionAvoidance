@@ -59,8 +59,6 @@ public class RTSystem {
 			}
 			this.map.nextCicle();
 		}
-		System.out.println(this.map.collisions);
-		System.out.println(this.map.leisure);
 	}
 
 }

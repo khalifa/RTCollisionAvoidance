@@ -4,7 +4,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		Map map = new Map(args[0]);
+		
 
 		int numberCicles = Integer.parseInt(args[1]);
 		boolean printMap;
@@ -18,6 +18,7 @@ public class Main {
 		int collisions = 0;
 		int leisure = 0;
 		for(int i = 0; i < numberExecutions; i++){
+			Map map = new Map(args[0]);
 			RTSystem system = new RTSystem(map, numberCicles, printMap);
 			system.run();
 			collisions += system.map.collisions;
