@@ -45,6 +45,7 @@ public class RTSystem {
 								v.stop = false;
 							}
 						}
+						time -=50;
 					}
 				} else {
 					Task t = highPriority.get(highPriority.size() - 1);

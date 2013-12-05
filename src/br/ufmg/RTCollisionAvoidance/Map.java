@@ -34,20 +34,20 @@ public class Map {
 				int numberAmbulances = s.nextInt();
 				int w = s.nextInt();
 				int h = s.nextInt();
-				System.out.println(w + " " + h);
+				//System.out.println(w + " " + h);
 				int[] blocsWidth;
 				blocsWidth = new int[h];
 				// Read width of the blocs
 				for (int i = 0; i < w; i++) {
 					blocsWidth[i] = s.nextInt();
-					System.out.println(blocsWidth[i]);
+					//System.out.println(blocsWidth[i]);
 				}
 				int[] blocsHeight;
 				blocsHeight = new int[h];
 				// Read height of the blocs
 				for (int i = 0; i < h; i++) {
 					blocsHeight[i] = s.nextInt();
-					System.out.println(blocsHeight[i]);
+					//System.out.println(blocsHeight[i]);
 				}
 				this.create(blocsHeight, blocsWidth);
 				for(int i =0; i < numberCarrs; i ++){
@@ -74,7 +74,7 @@ public class Map {
 		for (int i : blocsHeight) {
 			this.lines += i;
 		}
-		System.out.println(this.columns + " " + this.lines);
+		//System.out.println(this.columns + " " + this.lines);
 		this.grid = new Cell[this.lines][this.columns];
 
 		int countBlocV = 0;
@@ -121,16 +121,14 @@ public class Map {
 				if (r < 0) {
 					r += this.columns;
 				}
-				System.out.println(i + " " + r + "|" + i + " " + j + "|" + i
-						+ " " + (j + 1) % this.columns);
+				//System.out.println(i + " " + r + "|" + i + " " + j + "|" + i + " " + (j + 1) % this.columns);
 				this.grid[i][j].neighW = this.grid[i][r];
 				this.grid[i][j].neighE = this.grid[i][(j + 1) % this.columns];
 				r = (i - 1) % this.lines;
 				if (r < 0) {
 					r += this.lines;
 				}
-				System.out.println(r + " " + j + "|" + i + " " + j + "|"
-						+ (i + 1) % this.lines + " " + j);
+				//System.out.println(r + " " + j + "|" + i + " " + j + "|" + (i + 1) % this.lines + " " + j);
 				this.grid[i][j].neighN = this.grid[r][j];
 				this.grid[i][j].neighS = this.grid[(i + 1) % this.lines][j];
 			}
@@ -150,12 +148,12 @@ public class Map {
 					}
 					if(count > 1){
 						this.collisions++;
-						System.out.print("c");
+						//System.out.print("c");
 					}
 				}
 			}
 		}
-		System.out.println();
+		//System.out.println();
 	}
 	
 	public void detectLeisure() {
@@ -164,16 +162,9 @@ public class Map {
 				this.leisure++;
 			}
 		}
-		System.out.println(this.leisure);
 	}
 
 	public void print() {
-		for (int i = 0; i < this.vehicles.size(); i++) {
-			System.out.print("%");
-		}
-
-		System.out.println();
-		System.out.println();
 		for (int i = 0; i < this.lines; i++) {
 			for (int j = 0; j < this.columns; j++) {
 				boolean f = true;
@@ -208,6 +199,8 @@ public class Map {
 			}
 			System.out.println();
 		}
+		System.out.println();
+		System.out.println();
 	}
 
 	public void addVehicle(VehicleType type) {

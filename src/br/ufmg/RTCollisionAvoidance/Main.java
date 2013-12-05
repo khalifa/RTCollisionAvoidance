@@ -14,8 +14,17 @@ public class Main {
 			printMap = false;
 		}
 		
-		RTSystem system = new RTSystem(map, numberCicles, printMap);
-		system.run();
+		int numberExecutions = Integer.parseInt(args[3]);
+		int collisions = 0;
+		int leisure = 0;
+		for(int i = 0; i < numberExecutions; i++){
+			RTSystem system = new RTSystem(map, numberCicles, printMap);
+			system.run();
+			collisions += system.map.collisions;
+			leisure += system.map.leisure;
+		}
+		System.out.println("Collisions: " + collisions/numberExecutions);
+		System.out.println("Leisure Time: " + leisure/numberExecutions);
 	}
 
 }
